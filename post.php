@@ -19,7 +19,7 @@ if(isset($_SESSION['auth'])){
 if(isset($_POST['delete'])){
     $delete_id = $_POST['delete_id'];
     
-    $req = $bdd->prepare("DELETE FROM post WHERE id = ?");
+    $req = $bdd->prepare("DELETE FROM articles WHERE id = ?");
     
     $suppr = $req->execute([$delete_id]);
     if($suppr){
@@ -29,7 +29,7 @@ if(isset($_POST['delete'])){
 
 $id = $_GET['id'];
 
-$req = $bdd->query("SELECT * FROM post WHERE id = $id");
+$req = $bdd->query("SELECT * FROM articles WHERE id = $id");
 
 $post = $req->fetch(PDO::FETCH_OBJ);
 
@@ -47,7 +47,7 @@ $post = $req->fetch(PDO::FETCH_OBJ);
     <div class="container">
         <h1>bienvenu sur le site</h1>
         <h3><?= $post->title ?></h3>
-        <small>Crée par <?= $post->author ?></small>
+        <small>Crée par <?= $post->autor ?></small>
         <p><?= $post->content ?></p>
         <hr>
         <?php if($responseA === true): ?>
