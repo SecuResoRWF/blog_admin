@@ -15,7 +15,7 @@ if(isset($_SESSION['auth'])){
     $responseM = isMember($_SESSION['auth'], $bdd);
 }
 
-$req = $bdd->query('SELECT * FROM post');
+$req = $bdd->query('SELECT * FROM articles');
 
 $posts = $req->fetchAll(PDO::FETCH_OBJ);
 

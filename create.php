@@ -19,11 +19,15 @@ if($_POST){
     
     if(!empty($title) && !empty($author) && !empty($content)){
         
-        $req = $bdd->prepare("INSERT INTO post SET title = :title, author = :author, content = :content, created_at = NOW()");
+        $req = $bdd->prepare("INSERT INTO articles SET titre = :titre, content = :content,img = :img,autor = :autor, section = :section, created_at = NOW(), validation = :validation");
         $req->execute([
             'title' => $title,
-            'author'=> $author,
             'content'=> $content,
+            'img'=> $img,
+            'autor'=> $autor,
+            'section'=> $section,
+            'validation'=> $validation
+            
         ]);
         echo 'article crée';
     }

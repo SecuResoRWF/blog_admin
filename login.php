@@ -2,16 +2,16 @@
 require('config/bdd.php');
 
 if($_POST){
-    $username = htmlentities($_POST['username']);
-    $password = htmlentities($_POST['password']);
+    $log = htmlentities($_POST['log']);
+    $mdp = htmlentities($_POST['mdp']);
     
-    $req = $bdd->prepare('SELECT * FROM user WHERE username = ?');
+    $req = $bdd->prepare('SELECT * FROM user WHERE log = ?');
     
-    $req->execute([$username]);
+    $req->execute([$log]);
     
-    $user = $req->fetch(PDO::FETCH_OBJ);
+    $log = $req->fetch(PDO::FETCH_OBJ);
     
-    if(password_verify($password, $user->password)){
+    if(password_verify($mdp, $log->mdp)){
         session_start();
         $_SESSION['auth'] = $user->id;
         header('Location:index.php');
@@ -33,8 +33,8 @@ if($_POST){
         <h1>Se connecter</h1>
         <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>">
             <div class="form-group">
-                <input type="text" name="username" class="form-control">
-                <input type="password" name="password" class="form-control">
+                <input type="text" name="log" class="form-control">
+                <input type="password" name="mdp" class="form-control">
             </div>
             <br />
             <button class="btn btn-default" type="submit">Se connecter</button>
