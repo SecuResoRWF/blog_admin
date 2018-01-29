@@ -13,15 +13,19 @@ if(!isset($_SESSION['auth']) OR $responseA === false){
     header('Location: index.php');
 }
 if($_POST){
-    $title = htmlentities($_POST['title']);
-    $author = htmlentities($_POST['author']);
+    $titre = htmlentities($_POST['titre']);
     $content = htmlentities($_POST['content']);
+    $img = htmlentities($_POST['img']);
+    $autor = htmlentities($_POST['autor']);
+    $section = htmlentities($_POST['section']);
+    $validation = htmlentities($_POST['validation']);
     
-    if(!empty($title) && !empty($author) && !empty($content)){
+    
+    if(!empty($titre)  && !empty($content) && !empty($autor)){
         
         $req = $bdd->prepare("INSERT INTO articles SET titre = :titre, content = :content,img = :img,autor = :autor, section = :section, created_at = NOW(), validation = :validation");
         $req->execute([
-            'title' => $title,
+            'titre' => $titre,
             'content'=> $content,
             'img'=> $img,
             'autor'=> $autor,
@@ -49,9 +53,14 @@ if($_POST){
         <h1>ajouter un article</h1>
         <form method="POST" action="<?= $_SERVER['PHP_SELF'] ?>">
             <div class="form-group">
-                <input type="text" name="title" class="form-control">
-                <input type="text" name="author" class="form-control">
-                <textarea type="text" name="content" class="form-control"></textarea>
+                <input type="text" name="titre" class="form-control" placeholder="titre">
+                <textarea type="text" name="content" class="form-control" placeholder="article"></textarea>
+                <input type="text" name="img" class="form-control" placeholder="image">
+                <input type="text" name="autor" class="form-control" placeholder="auteur">
+                <input type="text" name="section" class="form-control" placeholder="section">
+                <input type="text" name="validation" class="form-control" placeholder="validation">
+                
+                
             </div>
             <br />
             <button class="btn btn-default" type="submit">Poster l'article</button>

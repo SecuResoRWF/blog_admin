@@ -13,7 +13,7 @@ if($_POST){
     
     if(password_verify($mdp, $log->mdp)){
         session_start();
-        $_SESSION['auth'] = $user->id;
+        $_SESSION['auth'] = $log->id;
         header('Location:index.php');
     }else{
         echo 'Mauvais identifiant/mot de passe';

@@ -1,6 +1,6 @@
 <?php
 
-$password = $_POST['password'];
+$password = $_POST['mdp'];
 
 
 $longueur = strlen($password1);

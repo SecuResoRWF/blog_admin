@@ -46,7 +46,7 @@ $post = $req->fetch(PDO::FETCH_OBJ);
 <body>
     <div class="container">
         <h1>bienvenu sur le site</h1>
-        <h3><?= $post->title ?></h3>
+        <h3><?= $post->titre ?></h3>
         <small>Crée par <?= $post->autor ?></small>
         <p><?= $post->content ?></p>
         <hr>

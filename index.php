@@ -18,7 +18,7 @@ if(isset($_SESSION['auth'])){
 $req = $bdd->query('SELECT * FROM articles');
 
 $posts = $req->fetchAll(PDO::FETCH_OBJ);
-
+//var_dump ($responseA);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,10 +44,11 @@ $posts = $req->fetchAll(PDO::FETCH_OBJ);
    </div>
     <div class="container">
         <h1>bienvenu sur le site</h1>
+        <select><option>été actif</option><option>popote et papote</option><option>sectio 3</option><option>section4</option></select>
         <?php foreach($posts as $post): ?>
-        <h3><?= $post->title ?></h3>
-        <small>Crée par <?= $post->author ?></small>
-        <p><?= $post->content ?></p>
+        <h3><?=  $post->titre ?></h3>
+        <small>Crée par <?= $post->autor ?></small>
+        <p><?=  $post->content ?></p>
         <a href="post.php?id=<?= $post->id ?>"><button class="btn btn-default">Lire plus</button></a>
         <?php endforeach; ?>
     </div>
